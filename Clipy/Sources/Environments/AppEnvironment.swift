@@ -74,7 +74,13 @@ struct AppEnvironment {
             excludeApplications = applications
         }
         let excludeAppService = ExcludeAppService(applications: excludeApplications)
-        return Environment(excludeAppService: excludeAppService)
+        return Environment(clipService: current.clipService,
+                           hotKeyService: current.hotKeyService,
+                           dataCleanService: current.dataCleanService,
+                           pasteService: current.pasteService,
+                           excludeAppService: excludeAppService,
+                           menuManager: current.menuManager,
+                           defaults: current.defaults)
     }
 
  }
