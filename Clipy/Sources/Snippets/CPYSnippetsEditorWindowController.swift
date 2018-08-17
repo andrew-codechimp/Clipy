@@ -483,3 +483,32 @@ extension CPYSnippetsEditorWindowController: RecordViewDelegate {
 
     func recordViewDidEndRecording(_ recordView: RecordView) {}
 }
+
+// MARK: - TouchBar Delegate
+@available(OSX 10.12.2, *)
+extension CPYSnippetsEditorWindowController: NSTouchBarDelegate {
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        touchBar.customizationIdentifier = .snippetEditorBar
+        touchBar.defaultItemIdentifiers = [.addSnippet, .addFolder]
+        return touchBar
+    }
+
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
+        switch identifier {
+        case NSTouchBarItem.Identifier.addFolder:
+            let addFolder = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(image: #imageLiteral(resourceName: "snippets_touchbar_add_folder"), target: self, action: #selector(addFolderButtonTapped(_:)))
+            addFolder.view = button
+            return addFolder
+        case NSTouchBarItem.Identifier.addSnippet:
+            let addSnippet = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(image: #imageLiteral(resourceName: "snippets_touchbar_add_snippet"), target: self, action: #selector(addSnippetButtonTapped(_:)))
+            addSnippet.view = button
+            return addSnippet
+        default:
+            return nil
+        }
+    }
+}

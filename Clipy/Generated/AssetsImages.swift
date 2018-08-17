@@ -79,6 +79,8 @@ internal enum Asset {
     internal static let snippetsIconFolderWhite = ImageAsset(name: "snippets_icon_folder_white")
     internal static let snippetsImport = ImageAsset(name: "snippets_import")
     internal static let snippetsImportOn = ImageAsset(name: "snippets_import_on")
+    internal static let snippetsTouchbarAddFolder = ImageAsset(name: "snippets_touchbar_add_folder")
+    internal static let snippetsTouchbarAddSnippet = ImageAsset(name: "snippets_touchbar_add_snippet")
   }
   internal enum StatusIcon {
     internal static let statusbarMenuBlack = ImageAsset(name: "statusbar_menu_black")
@@ -119,6 +121,8 @@ internal enum Asset {
     SnippetEditor.snippetsIconFolderWhite,
     SnippetEditor.snippetsImport,
     SnippetEditor.snippetsImportOn,
+    SnippetEditor.snippetsTouchbarAddFolder,
+    SnippetEditor.snippetsTouchbarAddSnippet,
     StatusIcon.statusbarMenuBlack,
     StatusIcon.statusbarMenuWhite,
   ]

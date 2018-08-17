@@ -198,6 +198,12 @@ extension AppDelegate: NSApplicationDelegate {
 
         // Managers
         AppEnvironment.current.menuManager.setup()
+
+        // TouchBar setup
+        if #available(OSX 10.12.2, *) {
+            NSApplication.shared.isAutomaticCustomizeTouchBarMenuItemEnabled = true
+        }
+
     }
 
     func applicationWillFinishLaunching(_ notification: Notification) {
@@ -206,6 +212,9 @@ extension AppDelegate: NSApplicationDelegate {
         #endif
     }
 
+    func applicationWillTerminate(_ aNotification: Notification) {
+        HotKeyCenter.shared.unregisterAll()
+    }
 }
 
 // MARK: - Bind
